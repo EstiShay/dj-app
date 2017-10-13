@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.aboutButton) Button mAboutButton;
+    @Bind(R.id.searchButton) Button mSearchButton;
     @Bind(R.id.listView) ListView mListView;
     private String[] songs = new String[] {"The Lady is a Tramp by Ella Fitzgerald", "Fine Brown " +
             "Frame by Lou Rawls", "Leaving on a Jet Plane by HB Radke and the Jet City Swingers",
@@ -35,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View thisView){
                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mSearchButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View thisView){
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });

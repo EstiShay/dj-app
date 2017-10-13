@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.epicodus.djmusicmanager.SearchActivity">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/searchTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Search for a song"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:textSize="40dp"
+        android:textColor="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/songTitleEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Song title (required)"
+        android:inputType="text"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:padding="5dp"/>
+
+    <EditText
+        android:id="@+id/artistNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Artist name (opt)"
+        android:layout_above="@+id/searchAPIButton"
+        android:layout_alignLeft="@+id/songTitleEditText"
+        android:layout_alignStart="@+id/songTitleEditText"
+        android:layout_marginBottom="66dp"
+        android:background="#FFFFFF"
+        android:padding="5dp"/>
+
+    <Button
+        android:id="@+id/searchAPIButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp"
+        android:text="Search"/>
+</RelativeLayout>
