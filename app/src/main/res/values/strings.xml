@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DJMusicManager</string>
+    <string name="about_title">About DJ Music Manager</string>
+    <string name="about_text">This app helps DJs manage their music metadata and keep personal
+        notes on individual tracks. Label your music with the type of dance event you\'ll play it
+        at, songs to pair it with, whether you own it already or want to add it to a wish list,
+        BPM, and more.
+    </string>
 </resources>
