@@ -21,7 +21,11 @@ Android app for social dance DJs to manage the metadata of songs they own or wan
 | ------------- | ------------- | ------------- |  
 
 ## Design
-Screenshots go here.
+Final screenshots go here.
+
+### Wireframing
+![Wireframing: start and search pages](app/src/main/res/drawable/wireframing2.jpg "Diagram of Start and Search pages")
+![Wireframing: search results and your notes pages](app/src/main/res/drawable/wireframing1.jpg "Diagram of search results and form to add personal notes")
 
 ## Setup/Installation Requirements
 * Clone the repo
