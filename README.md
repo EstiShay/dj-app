@@ -7,7 +7,7 @@
 ## Description
 
 Android app for social dance DJs to manage the metadata of songs they own or want to acquire. The DJ will be able to search by artist name or song title and retrieve metadata from the MusixMatch API, then add that song to their personal music tracking database and add other metadata relevant to DJ usage:
-* Type of dance event the song appropriate for: Swing (Lindy Hop etc.), Balboa, Blues, Fusion, Salsa, Tango, WCS, Contra, House Party
+* Type of dance event the song is appropriate for: Swing (Lindy Hop etc.), Balboa, Blues, Fusion, Salsa, Tango, WCS, Contra, House Party
 * Purpose it can be used for (opt): birthday jam, jam circle, exhibition, competition
 * Owned or Wish List
 * Songs to play before it
