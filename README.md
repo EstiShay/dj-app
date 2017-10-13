@@ -37,7 +37,7 @@ Final screenshots go here.
 * Firebase
 
 ### Known Bugs
-(if any)
+Wireframing images display in Markdown Preview in Atom but do not display in README on GitHub. If viewing this README on GitHub, please view the images in the drawable folder: https://github.com/EstiShay/dj-app/tree/master/app/src/main/res/drawable
 
 ### License
 
