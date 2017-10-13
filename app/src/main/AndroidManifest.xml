@@ -16,13 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity">
+        <activity
+            android:name=".AboutActivity"
+            android:theme="@style/SubTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.djmusicmanager.MainActivity"/>
         </activity>
         <activity
-            android:name=".SearchActivity">
+            android:name=".SearchActivity"
+            android:theme="@style/SubTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.djmusicmanager.MainActivity"/>

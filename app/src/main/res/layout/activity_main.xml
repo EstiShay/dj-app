@@ -14,10 +14,10 @@
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/headlineTextView"
+        android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your DJ Music + Notes"
+        android:text="DJMusicManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -26,13 +26,27 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:paddingBottom="20sp"
-        android:paddingTop="20sp"/>
+        android:paddingTop="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/subtitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your DJ Music + Notes"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="20dp"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_below="@+id/headlineTextView"
+        android:layout_below="@+id/subtitleTextView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:background="#FFFFFF"/>
@@ -62,5 +76,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>
