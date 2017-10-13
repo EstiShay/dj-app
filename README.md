@@ -26,6 +26,8 @@ Android app for social dance DJs to manage the metadata of songs they own or wan
 #### Future Development
 In the initial version, the Add button will allow users to create a record from scratch and the Search button will lead to the API search. The next iteration of this app would allow for either of those tasks when the Add button is clicked, and the Search button would allow the user to search their database of music metadata.
 
+Wide scale deployment of this app would require the ability to sync with iTunes, Winamp etc. so that an established DJ could import their current music collection without having to search each currently-owned track in MusixMatch.
+
 ## Design
 Final screenshots go here.
 
