@@ -1,12 +1,14 @@
 package com.epicodus.djmusicmanager;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.searchButton) Button mSearchButton;
     @Bind(R.id.listView) ListView mListView;
+    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
     private String[] songs = new String[] {"The Lady is a Tramp by Ella Fitzgerald", "Fine Brown " +
             "Frame by Lou Rawls", "Leaving on a Jet Plane by HB Radke and the Jet City Swingers",
    "Blue Suit Boogie by Indigo Swing", "Scratching Circles by JD McPherson", "On Revival Day by " +
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
+        mAppNameTextView.setTypeface(boolackFont);
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, songs);
         mListView.setAdapter(adapter);

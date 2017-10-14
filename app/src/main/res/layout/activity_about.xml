@@ -24,7 +24,8 @@
         android:layout_marginLeft="42dp"
         android:layout_marginStart="42dp"
         android:text="@string/about_title"
-        android:textColor="#FFFFFF"/>
+        android:textColor="#FFFFFF"
+        android:textSize="75dp"/>
 
     <TextView
         android:id="@+id/aboutTextView"
