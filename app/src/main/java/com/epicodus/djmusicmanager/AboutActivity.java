@@ -9,8 +9,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
-    @Bind(R.id.aboutTitleTextView)
-    TextView mAboutTitleTextView;
+    @Bind(R.id.aboutTitleTextView) TextView mAboutTitleTextView;
+    @Bind(R.id.aboutTextView) TextView mAboutTextView;
 
 
     @Override
@@ -22,5 +22,7 @@ public class AboutActivity extends AppCompatActivity {
 
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
         mAboutTitleTextView.setTypeface(boolackFont);
+        Typeface PTCFont = Typeface.createFromAsset(getAssets(), "fonts/PTC55F.ttf");
+        mAboutTextView.setTypeface(PTCFont);
     }
 }

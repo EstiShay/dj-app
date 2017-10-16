@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="88dp"
         android:textSize="80dp"
-        android:textColor="#FFFFFF"/>
+        android:textColor="@color/colorTextIcons"/>
 
     <EditText
         android:id="@+id/songTitleEditText"
@@ -61,5 +61,7 @@
         android:text="Search"
         android:layout_below="@+id/artistNameEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"/>
+        android:layout_marginTop="49dp"
+        android:background="@color/colorAccent"
+        android:textAllCaps="false"/>
 </RelativeLayout>

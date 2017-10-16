@@ -18,23 +18,24 @@
         android:id="@+id/aboutTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="42dp"
-        android:layout_marginStart="42dp"
         android:text="@string/about_title"
-        android:textColor="#FFFFFF"
-        android:textSize="75dp"/>
+        android:textColor="@color/colorTextIcons"
+        android:textSize="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/aboutTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/aboutTitleTextView"
-        android:layout_alignStart="@+id/aboutTitleTextView"
-        android:layout_below="@+id/aboutTitleTextView"
         android:layout_marginTop="43dp"
         android:text="@string/about_text"
-        android:textColor="#FFFFFF"/>
+        android:textColor="@color/colorTextIcons"
+        android:layout_below="@+id/aboutTitleTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:textSize="20dp"
+        android:background="#210701"
+        android:padding="10dp"/>
 </RelativeLayout>

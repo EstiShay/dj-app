@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.searchButton) Button mSearchButton;
     @Bind(R.id.listView) ListView mListView;
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.subtitleTextView) TextView mSubtitleTextView;
     private String[] songs = new String[] {"The Lady is a Tramp by Ella Fitzgerald", "Fine Brown " +
             "Frame by Lou Rawls", "Leaving on a Jet Plane by HB Radke and the Jet City Swingers",
    "Blue Suit Boogie by Indigo Swing", "Scratching Circles by JD McPherson", "On Revival Day by " +
@@ -34,9 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
         mAppNameTextView.setTypeface(boolackFont);
+        Typeface PTCFont = Typeface.createFromAsset(getAssets(), "fonts/PTC55F.ttf");
+        mSubtitleTextView.setTypeface(PTCFont);
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, songs);
         mListView.setAdapter(adapter);
+
 
         mAboutButton.setOnClickListener(new View.OnClickListener(){
             @Override
