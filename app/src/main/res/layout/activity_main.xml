@@ -28,7 +28,7 @@
         android:paddingBottom="30sp"
         android:paddingTop="20sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/subtitleTextView"
@@ -41,46 +41,74 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="68dp"
         android:layout_marginBottom="20dp"
-        android:paddingTop="30dp"/>
+        android:paddingTop="30dp"
+        android:layout_below="@+id/appNameTextView" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_below="@+id/subtitleTextView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="#FFFFFF"/>
+        android:background="#FFFFFF"
+        android:layout_above="@+id/navButtons"
+        android:layout_below="@+id/subtitleTextView"/>
 
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/navButtons"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textAllCaps="false"
-        android:text="Add" />
+        android:layout_centerHorizontal="true">
 
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="0dp"
+            android:layout_weight=".33"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/ic_add"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorTextIcons"
+            android:background="@color/colorPrimaryDark"
+            android:text="Add"
+            android:layout_alignParentBottom="true" />
 
-    <Button
-        android:id="@+id/aboutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="0dp"
+            android:layout_weight=".33"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorTextIcons"
+            android:background="@color/colorPrimaryDark"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/ic_search"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
 
-    <!--android:background="@color/colorAccent"-->
-    <!--android:textColor="@color/colorTextIcons"-->
+        <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="0dp"
+            android:layout_weight=".33"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/colorTextIcons"
+            android:background="@color/colorPrimaryDark"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/ic_about"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
+
+    </LinearLayout>
+
 </RelativeLayout>

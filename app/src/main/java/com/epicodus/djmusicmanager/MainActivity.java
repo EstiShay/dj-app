@@ -1,9 +1,11 @@
 package com.epicodus.djmusicmanager;
-
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -57,5 +59,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.action_add:
+//
+//                    case R.id.action_search:
+//                        Intent search_intent = new Intent(MainActivity.this, SearchActivity.class);
+//                        startActivity(search_intent);
+//
+//                    case R.id.action_about:
+//                        Intent about_intent = new Intent(MainActivity.this, AboutActivity.class);
+//                        startActivity(about_intent);
+//                }
+//                return true;
+//            }
+//        });
     }
 }
