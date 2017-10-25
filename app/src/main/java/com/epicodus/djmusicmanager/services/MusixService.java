@@ -31,9 +31,9 @@ public class MusixService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.MUSIX_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("apikey", Constants.MUSIX_KEY);
         urlBuilder.addQueryParameter(Constants.MUSIX_TITLE_QUERY_PARAMETER, songTitle);
-//        if (artistName != ""){
-//            urlBuilder.addQueryParameter(Constants.MUSIX_ARTIST_QUERY_PARAMETER, artistName);
-//        }
+        if (!artistName.equals("")){
+            urlBuilder.addQueryParameter(Constants.MUSIX_ARTIST_QUERY_PARAMETER, artistName);
+        }
         String url = urlBuilder.build().toString();
         Log.d("url", url);
 
