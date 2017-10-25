@@ -30,6 +30,7 @@ public class MusixService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.MUSIX_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("apikey", Constants.MUSIX_KEY);
         urlBuilder.addQueryParameter(Constants.MUSIX_TITLE_QUERY_PARAMETER, songTitle);
+        urlBuilder.addQueryParameter("page_size", "100");
         if (!artistName.equals("")){
             urlBuilder.addQueryParameter(Constants.MUSIX_ARTIST_QUERY_PARAMETER, artistName);
         }
@@ -41,7 +42,6 @@ public class MusixService {
 
         Call call = client.newCall(request);
         call.enqueue(callback);
-
     }
 
     public ArrayList<Song> processResults(Response response){
@@ -51,9 +51,7 @@ public class MusixService {
             String jsonData = response.body().string();
             JSONObject musixJSON = new JSONObject(jsonData);
             JSONObject messageJSON = musixJSON.getJSONObject("message");
-            Log.d("message", messageJSON.toString());
             JSONObject bodyJSON = messageJSON.getJSONObject("body");
-            Log.d("body", bodyJSON.toString());
             JSONArray tracksJSON = bodyJSON.getJSONArray("track_list");
             for (int i = 0; i <tracksJSON.length(); i++){
                 JSONObject songJSON = tracksJSON.getJSONObject(i);
