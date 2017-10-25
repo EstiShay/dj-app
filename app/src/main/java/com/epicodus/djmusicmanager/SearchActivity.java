@@ -1,5 +1,6 @@
 package com.epicodus.djmusicmanager;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,19 +28,31 @@ public class SearchActivity extends AppCompatActivity {
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
         mSearchTitleTextView.setTypeface(boolackFont);
 
-        mSearchAPIButton.setOnClickListener(new View.OnClickListener() {
+        mSearchAPIButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                if (v == mSearchAPIButton) {
-                    String title = mSongTitleEditText.getText().toString();
-                    String artist = mArtistNameEditText.getText().toString();
-
-                    if (title.equals("")){
-                        Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
-                    }
-                }
-
+            public void onClick(View v){
+                String songTitle = mSongTitleEditText.getText().toString();
+                String artistName = mArtistNameEditText.getText().toString();
+                Intent intent = new Intent(SearchActivity.this, ResultsActivity.class);
+                intent.putExtra("songTitle", songTitle);
+                intent.putExtra("artistName", artistName);
+                startActivity(intent);
             }
         });
+
+//        mSearchAPIButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (v == mSearchAPIButton) {
+//                    String title = mSongTitleEditText.getText().toString();
+//                    String artist = mArtistNameEditText.getText().toString();
+//
+//                    if (title.equals("")){
+//                        Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//
+//            }
+//        });
     }
 }
