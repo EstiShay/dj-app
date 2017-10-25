@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.djmusicmanager.R;
+import com.epicodus.djmusicmanager.models.Song;
 import com.epicodus.djmusicmanager.services.MusixService;
 
 import okhttp3.Call;
@@ -16,6 +17,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,19 +29,13 @@ public class ResultsActivity extends AppCompatActivity{
 
     public static final String TAG = ResultsActivity.class.getSimpleName();
 
-    private String[] songs = new String[] {"Solitaire", "This Year", "Just in Time", "You Were Cool",
-            "Gimme a Pigfoot", "Up the Wolves", "Do I Move You?", "Love Love Love", "Sugar in My Bowl",
-            "California Song", "Nobody's Fault But Mine", "California Song", "I Wish I Knew How it Would Feel to be Free",
-            "Cubs in Five", "Feelin' Good", "The Diaz Brothers", "Since I Fell For You", "Sax Rohmer", "Lilac Wine", "Woke Up New"};
+    public ArrayList<Song> songs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         ButterKnife.bind(this);
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, songs);
-        mResultsListView.setAdapter(adapter);
 
         Intent intent = getIntent();
         String songTitle = intent.getStringExtra("songTitle");
@@ -64,12 +60,25 @@ public class ResultsActivity extends AppCompatActivity{
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                songs = musixService.processResults(response);
+                ResultsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] songResults = new String[songs.size()];
+                        for (int i = 0; i < songResults.length; i++){
+                            songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + " (" + songs.get(i).getYear() + ")";
+                        }
+                        ArrayAdapter adapter = new ArrayAdapter(ResultsActivity.this, android.R.layout.simple_list_item_1, songResults);
+                        mResultsListView.setAdapter(adapter);
+
+                        for (Song song : songs ) {
+                            Log.d(TAG, "Title: " + song.getTitle());
+                            Log.d(TAG, "Artist: " + song.getArtist());
+                            Log.d(TAG, "Album: " + song.getAlbum());
+                            Log.d(TAG, "Year: " + song.getYear());
+                        }
+                    }
+                });
             }
         });
     }

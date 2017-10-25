@@ -23,7 +23,6 @@ import okhttp3.Response;
 public class MusixService {
 
     public static void findSongs(String songTitle, String artistName, Callback callback){
-        Log.d("service", "fired");
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
@@ -35,7 +34,6 @@ public class MusixService {
             urlBuilder.addQueryParameter(Constants.MUSIX_ARTIST_QUERY_PARAMETER, artistName);
         }
         String url = urlBuilder.build().toString();
-        Log.d("url", url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -52,13 +50,22 @@ public class MusixService {
         try {
             String jsonData = response.body().string();
             JSONObject musixJSON = new JSONObject(jsonData);
-            JSONArray tracksJSON = musixJSON.getJSONArray("track_list");
+            JSONObject messageJSON = musixJSON.getJSONObject("message");
+            Log.d("message", messageJSON.toString());
+            JSONObject bodyJSON = messageJSON.getJSONObject("body");
+            Log.d("body", bodyJSON.toString());
+            JSONArray tracksJSON = bodyJSON.getJSONArray("track_list");
             for (int i = 0; i <tracksJSON.length(); i++){
                 JSONObject songJSON = tracksJSON.getJSONObject(i);
-                String title = songJSON.getString("track_name");
-                String artist = songJSON.getString("artist_name");
-                String album = songJSON.getString("album_name");
-                String year = songJSON.getString("first_release_date").substring(0,3);
+                JSONObject trackJSON = songJSON.getJSONObject("track");
+                String title = trackJSON.optString("track_name", "Track name missing");
+                String artist = trackJSON.optString("artist_name", "Artist name missing");
+                String album = trackJSON.optString("album_name", "Album name missing");
+                String release = trackJSON.optString("first_release_date");
+                String year = "";
+                if (release.length() > 3) {
+                    year = release.substring(0,4);
+                }
                 Song song = new Song(title, artist, album, year);
                 songs.add(song);
             }
