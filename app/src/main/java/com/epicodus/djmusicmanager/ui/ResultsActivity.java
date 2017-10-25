@@ -67,20 +67,13 @@ public class ResultsActivity extends AppCompatActivity{
                         String[] songResults = new String[songs.size()];
                         for (int i = 0; i < songResults.length; i++){
                             if (!songs.get(i).getYear().equals("unknown")) {
-                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + " (" + songs.get(i).getYear() + ")";
+                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + ", from " + songs.get(i).getAlbum() + " (released " + songs.get(i).getYear() + ")";
                             } else {
-                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist();
+                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + ", from " + songs.get(i).getAlbum();
                             }
                         }
                         ArrayAdapter adapter = new ArrayAdapter(ResultsActivity.this, android.R.layout.simple_list_item_1, songResults);
                         mResultsListView.setAdapter(adapter);
-
-                        for (Song song : songs ) {
-                            Log.d(TAG, "Title: " + song.getTitle());
-                            Log.d(TAG, "Artist: " + song.getArtist());
-                            Log.d(TAG, "Album: " + song.getAlbum());
-                            Log.d(TAG, "Year: " + song.getYear());
-                        }
                     }
                 });
             }
