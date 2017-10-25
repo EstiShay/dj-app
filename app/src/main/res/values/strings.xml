@@ -6,4 +6,7 @@
         at, songs to pair it with, whether you own it already or want to add it to a wish list,
         BPM, and more.
     </string>
+    <string name="didn_t_find">Didn\'t find what you were looking for? Try a more specific search. Results capped at 100.</string>
+    <string name="song_title_required">Song title (required)</string>
+    <string name="artist_name_opt">Artist name (opt)</string>
 </resources>
