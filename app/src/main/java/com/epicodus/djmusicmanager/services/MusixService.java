@@ -63,6 +63,8 @@ public class MusixService {
                 String year = "";
                 if (release.length() > 3) {
                     year = release.substring(0,4);
+                } else {
+                    year = "unknown";
                 }
                 Song song = new Song(title, artist, album, year);
                 songs.add(song);

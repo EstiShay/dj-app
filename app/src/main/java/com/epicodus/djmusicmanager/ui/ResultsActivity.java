@@ -66,7 +66,11 @@ public class ResultsActivity extends AppCompatActivity{
                     public void run() {
                         String[] songResults = new String[songs.size()];
                         for (int i = 0; i < songResults.length; i++){
-                            songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + " (" + songs.get(i).getYear() + ")";
+                            if (!songs.get(i).getYear().equals("unknown")) {
+                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + " (" + songs.get(i).getYear() + ")";
+                            } else {
+                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist();
+                            }
                         }
                         ArrayAdapter adapter = new ArrayAdapter(ResultsActivity.this, android.R.layout.simple_list_item_1, songResults);
                         mResultsListView.setAdapter(adapter);
