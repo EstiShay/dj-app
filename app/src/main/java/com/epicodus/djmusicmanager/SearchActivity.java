@@ -36,7 +36,11 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(SearchActivity.this, ResultsActivity.class);
                 intent.putExtra("songTitle", songTitle);
                 intent.putExtra("artistName", artistName);
-                startActivity(intent);
+                if (songTitle.equals("")){
+                    Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
+                } else {
+                    startActivity(intent);
+                }
             }
         });
 
@@ -44,12 +48,14 @@ public class SearchActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                if (v == mSearchAPIButton) {
-//                    String title = mSongTitleEditText.getText().toString();
-//                    String artist = mArtistNameEditText.getText().toString();
+//                    String songTitle = mSongTitleEditText.getText().toString();
+//                    String artistName = mArtistNameEditText.getText().toString();
+
+//                        if (songTitle.equals("")){
+//                            Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
+//                        }
 //
-//                    if (title.equals("")){
-//                        Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
-//                    }
+//
 //                }
 //
 //            }
