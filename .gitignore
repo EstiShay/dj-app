@@ -57,4 +57,4 @@ captures/
 google-services.json
 
 #API
-/gradle.properties
+gradle.properties
