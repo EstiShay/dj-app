@@ -1,5 +1,4 @@
-package com.epicodus.djmusicmanager;
-
+package com.epicodus.djmusicmanager.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,22 +8,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.epicodus.djmusicmanager.R;
+import com.epicodus.djmusicmanager.services.MusixService;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+
 
 public class ResultsActivity extends AppCompatActivity{
     @Bind(R.id.resultsListView) ListView mResultsListView;
     @Bind(R.id.searchedTitleTextView) TextView mSearchedTitleTextView;
 
-//    private TextView mSongTitleTextView;
-//    private ListView mResultsListView;
     public static final String TAG = ResultsActivity.class.getSimpleName();
 
     private String[] songs = new String[] {"Solitaire", "This Year", "Just in Time", "You Were Cool",
@@ -49,28 +49,28 @@ public class ResultsActivity extends AppCompatActivity{
         } else {
             mSearchedTitleTextView.setText("You searched: " + songTitle);
         }
+        getTracks(songTitle, artistName);
     }
 
 
-//    private void getTracks(String songTitle, String artistName) {
-//        final MusixService musixService = new MusixService();
-//        musixService.findSongs(songTitle, artistName, new Callback() {
-//
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                try {
-//                    String jsonData = response.body().string();
-//                    Log.v(TAG, jsonData);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//        });
-//    }
+    private void getTracks(String songTitle, String artistName) {
+        final MusixService musixService = new MusixService();
+        musixService.findSongs(songTitle, artistName, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

@@ -17,25 +17,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".ui.AboutActivity"
             android:theme="@style/SubTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.djmusicmanager.MainActivity"/>
         </activity>
         <activity
-            android:name=".SearchActivity"
+            android:name=".ui.SearchActivity"
             android:theme="@style/SubTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.djmusicmanager.MainActivity"/>
         </activity>
         <activity
-            android:name=".ResultsActivity"
+            android:name=".ui.ResultsActivity"
             android:theme="@style/SubTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.djmusicmanager.SearchActivity"/>
+                android:value="com.epicodus.djmusicmanager.ui.SearchActivity"/>
         </activity>
     </application>
 

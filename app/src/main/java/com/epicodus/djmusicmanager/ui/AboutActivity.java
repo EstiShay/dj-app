@@ -1,9 +1,11 @@
-package com.epicodus.djmusicmanager;
+package com.epicodus.djmusicmanager.ui;
 
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.epicodus.djmusicmanager.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

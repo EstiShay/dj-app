@@ -1,4 +1,4 @@
-package com.epicodus.djmusicmanager;
+package com.epicodus.djmusicmanager.models;
 
 
 public class Song {
