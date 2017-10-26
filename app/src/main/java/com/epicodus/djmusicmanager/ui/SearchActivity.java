@@ -55,14 +55,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             intent.putExtra("songTitle", songTitle);
             intent.putExtra("artistName", artistName);
             if (songTitle.equals("")){
-                Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
+                Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_SHORT).show();
             } else {
                 addToSharedPreferences(songTitle);
                 startActivity(intent);
             }
         } else if (v == mSearchYouTubeButton) {
             if (songTitle.equals("")) {
-                Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
+                Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_SHORT).show();
             } else if (!artistName.equals("")) {
                 String searchStr = (songTitle.replaceAll(" ", "+") + "+" + artistName.replaceAll(" ", "+"));
                 Uri webpage = Uri.parse("http://www.youtube.com/results?search_query=" + searchStr);
@@ -79,7 +79,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     private void addToSharedPreferences(String songTitle){
         mEditor.putString(Constants.PREFERENCES_TITLE_KEY, songTitle).apply();
-        Log.d(Constants.PREFERENCES_TITLE_KEY, songTitle);
     }
 
 }

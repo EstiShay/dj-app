@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(intent);
         } else if (v == mAddButton) {
-            Toast.makeText(MainActivity.this, "Feature coming soon!", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Feature coming soon!", Toast.LENGTH_SHORT).show();
         }
     }
 }
