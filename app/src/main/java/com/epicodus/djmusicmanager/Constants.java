@@ -5,4 +5,6 @@ public class Constants {
     public static final String MUSIX_BASE_URL = "https://api.musixmatch.com/ws/1.1/track.search?";
     public static final String MUSIX_TITLE_QUERY_PARAMETER = "q_track";
     public static final String MUSIX_ARTIST_QUERY_PARAMETER = "q_artist";
+
+    public static final String PREFERENCES_TITLE_KEY = "songTitle";
 }
