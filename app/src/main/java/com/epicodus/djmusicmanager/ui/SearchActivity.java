@@ -45,22 +45,5 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        mSearchAPIButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (v == mSearchAPIButton) {
-//                    String songTitle = mSongTitleEditText.getText().toString();
-//                    String artistName = mArtistNameEditText.getText().toString();
-
-//                        if (songTitle.equals("")){
-//                            Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
-//                        }
-//
-//
-//                }
-//
-//            }
-//        });
     }
 }

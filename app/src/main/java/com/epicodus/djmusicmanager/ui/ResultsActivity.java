@@ -74,8 +74,6 @@ public class ResultsActivity extends AppCompatActivity{
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
                         }
-
-
                     }
                 });
             }
