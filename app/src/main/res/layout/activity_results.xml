@@ -9,25 +9,18 @@
     android:paddingTop="16dp"
     tools:context=".ui.ResultsActivity">
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Song searched"-->
-        <!--android:id="@+id/searchedTitleTextView"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerHorizontal="true" />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/noResultsTextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/resultsRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <!--<ListView-->
-        <!--android:layout_below="@+id/searchedTitleTextView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/resultsListView"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true"/>-->
 
 </RelativeLayout>

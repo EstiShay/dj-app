@@ -27,8 +27,7 @@ import butterknife.ButterKnife;
 
 
 public class ResultsActivity extends AppCompatActivity{
-//    @Bind(R.id.resultsListView) ListView mResultsListView;
-//    @Bind(R.id.searchedTitleTextView) TextView mSearchedTitleTextView;
+    @Bind(R.id.noResultsTextView) TextView mNoResultsTextView;
 
     @Bind(R.id.resultsRecyclerView) RecyclerView mRecyclerView;
     private ResultListAdapter mAdapter;
@@ -46,11 +45,7 @@ public class ResultsActivity extends AppCompatActivity{
         Intent intent = getIntent();
         String songTitle = intent.getStringExtra("songTitle");
         String artistName = intent.getStringExtra("artistName");
-//        if (!artistName.equals("")){
-//            mSearchedTitleTextView.setText("You searched: " + songTitle + " by " + artistName);
-//        } else {
-//            mSearchedTitleTextView.setText("You searched: " + songTitle);
-//        }
+
         getTracks(songTitle, artistName);
     }
 
@@ -70,22 +65,15 @@ public class ResultsActivity extends AppCompatActivity{
                 ResultsActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        String[] songResults = new String[songs.size()];
-//                        for (int i = 0; i < songResults.length; i++){
-//                            if (!songs.get(i).getYear().equals("unknown")) {
-//                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + ", from " + songs.get(i).getAlbum() + " (released " + songs.get(i).getYear() + ")";
-//                            } else {
-//                                songResults[i] = songs.get(i).getTitle() + " by " + songs.get(i).getArtist() + ", from " + songs.get(i).getAlbum();
-//                            }
-//                        }
-//                        ArrayAdapter adapter = new ArrayAdapter(ResultsActivity.this, android.R.layout.simple_list_item_1, songResults);
-//                        mResultsListView.setAdapter(adapter);
-
-                        mAdapter = new ResultListAdapter(getApplicationContext(), songs);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ResultsActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
+                        if (songs.size() == 0) {
+                            mNoResultsTextView.setText("No results - please go back and try again");
+                        } else {
+                            mAdapter = new ResultListAdapter(getApplicationContext(), songs);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ResultsActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+                        }
                     }
                 });
             }

@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.djmusicmanager.ui.AboutActivity;
 import com.epicodus.djmusicmanager.ui.SearchActivity;
@@ -15,9 +16,10 @@ import com.epicodus.djmusicmanager.ui.SearchActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.searchButton) Button mSearchButton;
+    @Bind(R.id.addButton) Button mAddButton;
     @Bind(R.id.listView) ListView mListView;
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
     @Bind(R.id.subtitleTextView) TextView mSubtitleTextView;
@@ -43,40 +45,21 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, songs);
         mListView.setAdapter(adapter);
 
+        mAboutButton.setOnClickListener(this);
+        mSearchButton.setOnClickListener(this);
+        mAddButton.setOnClickListener(this);
+    }
 
-        mAboutButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View thisView){
-                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mSearchButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View thisView){
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
-        });
-
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.action_add:
-//
-//                    case R.id.action_search:
-//                        Intent search_intent = new Intent(MainActivity.this, SearchActivity.class);
-//                        startActivity(search_intent);
-//
-//                    case R.id.action_about:
-//                        Intent about_intent = new Intent(MainActivity.this, AboutActivity.class);
-//                        startActivity(about_intent);
-//                }
-//                return true;
-//            }
-//        });
+    @Override
+    public void onClick(View v) {
+        if (v == mAboutButton){
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        } else if (v == mSearchButton) {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
+        } else if (v == mAddButton) {
+            Toast.makeText(MainActivity.this, "Feature coming soon!", Toast.LENGTH_LONG).show();
+        }
     }
 }
