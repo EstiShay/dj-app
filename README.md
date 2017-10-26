@@ -21,10 +21,12 @@ Android app for social dance DJs to manage the metadata of songs they own or wan
 | ------------- | ------------- | ------------- |
 | User searches by track name | The Lady is a Tramp | 1. The Lady is a Tramp by Ella Fitzgerald, The Very Best of Ella Fitzgerald, 2001<br>2. The Lady is a Tramp by Frank Sinatra, ... |
 | User searches by track name and artist | Title: The Lady is a Tramp <br>Artist: Ella Fitzgerald | 1. The Lady is a Tramp by Ella Fitzgerald, The Very Best of Ella Fitzgerald, 2001<br>2. The Lady is a Tramp by Ella Fitzgerald, Night & Day, 1977 ... |
-| User adds record to their collection with notes | Title: The Lady is a Tramp<br>Artist: Ella Fitzgerald<br>Album: The Very Best of Ella Fitzgerald<br>Year: 2001<br>Type of event: Swing dance<br>Purpose: Birthday jam<br>[x]Owned<br>Songs to play before it: TBD<br>Songs to play after it: TBD<br>BPM: 168<br>Personal notes: Has a slow intro | Your music: <br>1. The Lady is a Tramp by Ella Fitzgerald, The Very Best of Ella Fitzgerald, 2001<br><br> Dialogfragment: Title: The Lady is a Tramp<br>Artist: Ella Fitzgerald<br>Album: The Very Best of Ella Fitzgerald<br>Year: 2001<br>Type of event: Swing dance<br>Purpose: Birthday jam<br>[x]Owned<br>Songs to play before it: TBD<br>Songs to play after it: TBD<br>BPM: 168<br>Personal notes: Has a slow intro |
+| User adds record to their collection with notes | Title: The Lady is a Tramp<br>Artist: Ella Fitzgerald<br>Album: The Very Best of Ella Fitzgerald<br>Year: 2001<br>Type of event: Swing dance<br>Purpose: Birthday jam<br>\[x\]Owned<br>Songs to play before it: TBD<br>Songs to play after it: TBD<br>BPM: 168<br>Personal notes: Has a slow intro | Your music: <br>1. The Lady is a Tramp by Ella Fitzgerald, The Very Best of Ella Fitzgerald, 2001<br><br> Dialogfragment: Title: The Lady is a Tramp<br>Artist: Ella Fitzgerald<br>Album: The Very Best of Ella Fitzgerald<br>Year: 2001<br>Type of event: Swing dance<br>Purpose: Birthday jam<br>\[x\]Owned<br>Songs to play before it: TBD<br>Songs to play after it: TBD<br>BPM: 168<br>Personal notes: Has a slow intro |
 
 #### Future Development
 In the initial version, the Add button will allow users to create a record from scratch and the Search button will lead to the API search. The next iteration of this app would allow for either of those tasks when the Add button is clicked, and the Search button would allow the user to search their database of music metadata.
+
+The SearchActivity's implicit intent that takes DJs to YouTube will move to the ResultsActivity, so that if a DJ receives a result from MusixMatch that they're unfamiliar with, they can go to YouTube to listen to it.
 
 ## Design
 Final screenshots go here.
