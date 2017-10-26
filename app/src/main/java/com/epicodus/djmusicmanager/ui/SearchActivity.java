@@ -50,19 +50,22 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             } else {
                 startActivity(intent);
             }
-        } else if (v == mSearchYouTubeButton){
+        } else if (v == mSearchYouTubeButton) {
             String songTitle = mSongTitleEditText.getText().toString();
             String artistName = mArtistNameEditText.getText().toString();
-            if(songTitle.equals("")){
+            if (songTitle.equals("")) {
                 Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_LONG).show();
+            } else if (!artistName.equals("")) {
+                String searchStr = (songTitle.replaceAll(" ", "+") + "+" + artistName.replaceAll(" ", "+"));
+                Uri webpage = Uri.parse("http://www.youtube.com/results?search_query=" + searchStr);
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(webIntent);
             } else {
                 String searchTitle = songTitle.replaceAll(" ", "+");
                 Uri webpage = Uri.parse("http://www.youtube.com/results?search_query=" + searchTitle);
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
             }
-
         }
-
     }
 }
