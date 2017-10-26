@@ -30,8 +30,8 @@ In the initial version, the Add button will allow users to create a record from 
 Final screenshots go here.
 
 ### Wireframing
-![Wireframing: start and search pages](app/src/main/res/drawable/wireframing2.jpg "Diagram of Start and Search pages")
-![Wireframing: search results and your notes pages](app/src/main/res/drawable/wireframing1.jpg "Diagram of search results and form to add personal notes")
+![Wireframing: start and search pages](app/src/main/res/drawable/wireframing2.JPG "Diagram of Start and Search pages")
+![Wireframing: search results and your notes pages](app/src/main/res/drawable/wireframing1.JPG "Diagram of search results and form to add personal notes")
 
 ## Setup/Installation Requirements
 * Clone the repo
