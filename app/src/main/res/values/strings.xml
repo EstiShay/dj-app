@@ -2,11 +2,15 @@
     <string name="app_name">DJMusicManager</string>
     <string name="about_title">About DJ Music Manager</string>
     <string name="about_text">This app helps DJs manage their music metadata and keep personal
-        notes on individual tracks. Label your music with the type of dance event you\'ll play it
-        at, songs to pair it with, whether you own it already or want to add it to a wish list,
-        BPM, and more.
+        notes on individual tracks. Our beautiful background image photo is by Ardian Lumi on Unsplash.
     </string>
+    <string name="features_text">Tap Search to find your track. You\'ll see results from
+        MusixMatch\'s database of music track metadata. Tap a title to display the form to create a
+        personal record for that song. Label your music with the type of dance event you\'ll play it
+        at, songs to pair it with, whether you own it already or want to add it to a wish list,
+        BPM, and more. Save to your database, hosted by Firebase. You can also create your own records
+        by tapping Add.</string>
     <string name="didn_t_find">Didn\'t find what you were looking for? Try a more specific search. Results capped at 100.</string>
     <string name="song_title_required">Song title (required)</string>
-    <string name="artist_name_opt">Artist name (opt)</string>
+    <string name="artist_name_opt">Artist name (optional)</string>
 </resources>
