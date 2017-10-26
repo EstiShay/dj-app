@@ -30,20 +30,22 @@ In the initial version, the Add button will allow users to create a record from 
 Final screenshots go here.
 
 ### Wireframing
-![Wireframing: start and search pages](/app/src/main/res/drawable/wireframing2.jpg "Diagram of Start and Search pages")
-![Wireframing: search results and your notes pages](/app/src/main/res/drawable/wireframing1.jpg "Diagram of search results and form to add personal notes")
+![Wireframing: start and search pages](app/src/main/res/drawable/wireframing2.jpg "Diagram of Start and Search pages")
+![Wireframing: search results and your notes pages](app/src/main/res/drawable/wireframing1.jpg "Diagram of search results and form to add personal notes")
 
 ## Setup/Installation Requirements
 * Clone the repo
-* Sign up for a free API key from MusixMatch
+* Sign up for a free API key from MusixMatch: https://developer.musixmatch.com/signup. MusixMatch provides three [plans](https://developer.musixmatch.com/plans "plans") but this project works with the free testing plan.
+* At the root level, create a Java class file named gradle.properties. Save your API key here and name it "MusixKey."
 
 ### Technologies Used
-* Java
+* Java, XML
 * AndroidStudio
 * Firebase
 
 ### Known Bugs
-Wireframing images display in Markdown Preview in Atom but do not display in README on GitHub. If viewing this README on GitHub, please view the images in the drawable folder: https://github.com/EstiShay/dj-app/tree/master/app/src/main/res/drawable
+None at present.
+The Add button is present but not yet functional.
 
 ### License
 
