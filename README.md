@@ -42,7 +42,7 @@ Final screenshots go here.
 
 ### Technologies Used
 * Java, XML
-* AndroidStudio
+* Android Studio
 * Firebase
 
 ### Known Bugs

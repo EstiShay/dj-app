@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="@string/about_title"
         android:textColor="@color/colorTextIcons"
-        android:textSize="75dp"
+        android:textSize="75sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
@@ -35,7 +35,79 @@
         android:layout_below="@+id/aboutTitleTextView"
         android:layout_centerHorizontal="true"
         android:layout_margin="15dp"
-        android:textSize="20dp"
-        android:background="#210701"
+        android:textSize="15sp"
+        android:background="@drawable/rounded_corner"
         android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/featuresTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:text="@string/features_text"
+        android:textColor="@color/colorTextIcons"
+        android:layout_below="@+id/aboutTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:textSize="15sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/navButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="0dp"
+            android:layout_weight=".33"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/ic_add"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorTextIcons"
+            android:background="@color/colorPrimaryDark"
+            android:text="Add"
+            android:layout_alignParentBottom="true" />
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="0dp"
+            android:layout_weight=".33"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorTextIcons"
+            android:background="@color/colorPrimaryDark"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/ic_search"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
+
+        <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="0dp"
+            android:layout_weight=".33"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/colorTextIcons"
+            android:background="@color/colorPrimaryDark"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/ic_about"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
+
+    </LinearLayout>
+
 </RelativeLayout>
