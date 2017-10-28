@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.epicodus.djmusicmanager.ui.AboutActivity;
 import com.epicodus.djmusicmanager.ui.RecordFormDialogFragment;
 import com.epicodus.djmusicmanager.ui.SearchActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,8 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             "David", "Sweet Little Angel by Big Mama Thornton", "Bump and Grind by Jimmy " +
             "Thackery", "John the Revelator by Govt Mule", "John the Revelator by Lee Roy Parnell"};
 
+    private DatabaseReference mSearchedSongReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -63,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == mAddButton) {
             RecordFormDialogFragment recordFormDialogFragmentDialogFragment = new RecordFormDialogFragment();
             recordFormDialogFragmentDialogFragment.show(getSupportFragmentManager(), "Record Form Dialog");
+//            saveSongToFirebase(songTitle);
         }
+    }
+
+    public void saveSongToFirebase(String songTitle) {
+        mSearchedSongReference.setValue(songTitle);
     }
 }

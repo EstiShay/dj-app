@@ -16,9 +16,14 @@ import android.widget.Toast;
 
 import com.epicodus.djmusicmanager.Constants;
 import com.epicodus.djmusicmanager.R;
+import com.epicodus.djmusicmanager.models.Record;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static java.security.AccessController.getContext;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.searchTitleTextView) TextView mSearchTitleTextView;
@@ -27,11 +32,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Bind(R.id.searchAPIButton) Button mSearchAPIButton;
     @Bind(R.id.searchYouTubeButton) Button mSearchYouTubeButton;
 
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+
+    private DatabaseReference mSearchedSongReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
@@ -39,8 +47,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
         mSearchTitleTextView.setTypeface(boolackFont);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
         mSearchAPIButton.setOnClickListener(this);
         mSearchYouTubeButton.setOnClickListener(this);
@@ -50,6 +58,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v){
         String songTitle = mSongTitleEditText.getText().toString();
         String artistName = mArtistNameEditText.getText().toString();
+        Record mSong = new Record(songTitle, artistName);
         if (v == mSearchAPIButton) {
             Intent intent = new Intent(SearchActivity.this, ResultsActivity.class);
             intent.putExtra("songTitle", songTitle);
@@ -57,7 +66,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             if (songTitle.equals("")){
                 Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_SHORT).show();
             } else {
-                addToSharedPreferences(songTitle);
+//                addToSharedPreferences(songTitle);
+                DatabaseReference songRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_SONGS);
+                songRef.push().setValue(mSong);
+//                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         } else if (v == mSearchYouTubeButton) {
@@ -77,8 +91,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void addToSharedPreferences(String songTitle){
-        mEditor.putString(Constants.PREFERENCES_TITLE_KEY, songTitle).apply();
+//    private void addToSharedPreferences(String songTitle){
+//        mEditor.putString(Constants.PREFERENCES_TITLE_KEY, songTitle).apply();
+//    }
+    public void saveSongToFirebase(String songTitle, String artistName) {
+        mSearchedSongReference.push().setValue(artistName, songTitle);
     }
 
 }
