@@ -54,17 +54,6 @@
         android:layout_alignStart="@+id/songTitleEditText"
         android:layout_marginTop="51dp"/>
 
-    <!--<Button-->
-        <!--android:id="@+id/searchAPIButton"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Search"-->
-        <!--android:layout_below="@+id/artistNameEditText"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="49dp"-->
-        <!--android:background="@color/colorAccent"-->
-        <!--android:textAllCaps="false"/>-->
-
     <LinearLayout
         android:id="@+id/searchNavButtons"
         android:layout_width="match_parent"

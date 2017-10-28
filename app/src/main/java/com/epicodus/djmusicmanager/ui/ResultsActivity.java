@@ -28,7 +28,6 @@ import butterknife.ButterKnife;
 
 public class ResultsActivity extends AppCompatActivity{
     @Bind(R.id.noResultsTextView) TextView mNoResultsTextView;
-
     @Bind(R.id.resultsRecyclerView) RecyclerView mRecyclerView;
     private ResultListAdapter mAdapter;
 

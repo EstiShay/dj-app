@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragmentLabel"
+        android:text="@string/add_a_new_track"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:textSize="50sp"
+        android:textColor="@color/colorPrimaryText"/>
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventHeaderTextView"
+        android:text="Type of dance: "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/eventEditText"
+        android:layout_alignBottom="@+id/eventEditText"
+        android:layout_toLeftOf="@+id/eventEditText"
+        android:layout_toStartOf="@+id/eventEditText" />
+    <EditText
+        android:id="@+id/eventEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint="(will become a spinner)"
+        android:inputType="text"
+        android:layout_below="@+id/fragmentLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleHeaderTextView"
+        android:text="Song title: "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/titleEditText"
+        android:layout_alignBottom="@+id/titleEditText"
+        android:layout_toLeftOf="@+id/titleEditText"
+        android:layout_toStartOf="@+id/titleEditText" />
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint=""
+        android:inputType="text"
+        android:layout_below="@+id/eventHeaderTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/artistHeaderTextView"
+        android:text="Artist name: "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/artistEditText"
+        android:layout_alignBottom="@+id/artistEditText"
+        android:layout_toLeftOf="@+id/artistEditText"
+        android:layout_toStartOf="@+id/artistEditText" />
+    <EditText
+        android:id="@+id/artistEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint=""
+        android:inputType="text"
+        android:layout_below="@+id/titleHeaderTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/albumHeaderTextView"
+        android:text="Album: "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/albumEditText"
+        android:layout_alignBottom="@+id/albumEditText"
+        android:layout_toLeftOf="@+id/albumEditText"
+        android:layout_toStartOf="@+id/albumEditText" />
+    <EditText
+        android:id="@+id/albumEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint=""
+        android:inputType="text"
+        android:layout_below="@+id/artistHeaderTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/yearHeaderTextView"
+        android:text="Year: "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/yearEditText"
+        android:layout_alignBottom="@+id/yearEditText"
+        android:layout_toLeftOf="@+id/yearEditText"
+        android:layout_toStartOf="@+id/yearEditText" />
+    <EditText
+        android:id="@+id/yearEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint=""
+        android:inputType="text"
+        android:layout_below="@+id/albumHeaderTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/songBeforeHeaderTextView"
+        android:text="Lead in song(s): "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/songBeforeEditText"
+        android:layout_alignBottom="@+id/songBeforeEditText"
+        android:layout_toLeftOf="@+id/songBeforeEditText"
+        android:layout_toStartOf="@+id/songBeforeEditText" />
+    <EditText
+        android:id="@+id/songBeforeEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint=""
+        android:inputType="text"
+        android:layout_below="@+id/yearHeaderTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/songAfterHeaderTextView"
+        android:text="Following song(s): "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/songAfterEditText"
+        android:layout_alignBottom="@+id/songAfterEditText"
+        android:layout_toLeftOf="@+id/songAfterEditText"
+        android:layout_toStartOf="@+id/songAfterEditText" />
+    <EditText
+        android:id="@+id/songAfterEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint=""
+        android:inputType="text"
+        android:layout_below="@+id/songBeforeHeaderTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/BPMHeaderTextView"
+        android:text="BPM: "
+        android:textSize="15sp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignBaseline="@+id/BPMEditText"
+        android:layout_alignBottom="@+id/BPMEditText"
+        android:layout_toLeftOf="@+id/BPMEditText"
+        android:layout_toStartOf="@+id/BPMEditText" />
+
+    <EditText
+        android:id="@+id/BPMEditText"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/songAfterHeaderTextView"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:ems="15"
+        android:hint=""
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryText"
+        android:text="Add as:"
+        android:id="@+id/textView"
+        android:layout_below="@+id/BPMEditText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/BPMHeaderTextView"
+        android:layout_alignStart="@+id/BPMHeaderTextView" />
+
+    <LinearLayout
+        android:id="@+id/radioLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/BPMEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp">
+
+        <RadioGroup
+            android:id="@+id/ownedRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Owned" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Wish List" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_below="@+id/radioLayout"
+        android:layout_alignLeft="@+id/BPMHeaderTextView"
+        android:layout_alignStart="@+id/BPMHeaderTextView"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_alignBaseline="@+id/submitButton"
+        android:layout_alignBottom="@+id/submitButton"
+        android:layout_alignRight="@+id/BPMEditText"
+        android:layout_alignEnd="@+id/BPMEditText" />
+
+</RelativeLayout>

@@ -1,4 +1,5 @@
 package com.epicodus.djmusicmanager;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.djmusicmanager.ui.AboutActivity;
+import com.epicodus.djmusicmanager.ui.RecordFormDialogFragment;
 import com.epicodus.djmusicmanager.ui.SearchActivity;
 
 import butterknife.Bind;
@@ -59,7 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(intent);
         } else if (v == mAddButton) {
-            Toast.makeText(MainActivity.this, "Feature coming soon!", Toast.LENGTH_LONG).show();
+            RecordFormDialogFragment recordFormDialogFragmentDialogFragment = new RecordFormDialogFragment();
+            recordFormDialogFragmentDialogFragment.show(getSupportFragmentManager(), "Record Form Dialog");
         }
     }
 }
