@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             "David", "Sweet Little Angel by Big Mama Thornton", "Bump and Grind by Jimmy " +
             "Thackery", "John the Revelator by Govt Mule", "John the Revelator by Lee Roy Parnell"};
 
-    private DatabaseReference mSearchedSongReference;
+    private DatabaseReference mAddedSongReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == mAddButton) {
             RecordFormDialogFragment recordFormDialogFragmentDialogFragment = new RecordFormDialogFragment();
             recordFormDialogFragmentDialogFragment.show(getSupportFragmentManager(), "Record Form Dialog");
-//            saveSongToFirebase(songTitle);
         }
     }
 
+//    Receive POJO from fragment
+//    DatabaseReference songRef = FirebaseDatabase
+//            .getInstance()
+//            .getReference(Constants.FIREBASE_CHILD_SONGS);
+//            songRef.push().setValue(mSong);
+
     public void saveSongToFirebase(String songTitle) {
-        mSearchedSongReference.setValue(songTitle);
+        mAddedSongReference.setValue(songTitle);
     }
 }

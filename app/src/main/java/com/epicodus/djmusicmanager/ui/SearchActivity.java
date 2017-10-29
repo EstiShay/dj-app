@@ -71,7 +71,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         .getInstance()
                         .getReference(Constants.FIREBASE_CHILD_SONGS);
                 songRef.push().setValue(mSong);
-//                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         } else if (v == mSearchYouTubeButton) {
@@ -94,8 +93,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 //    private void addToSharedPreferences(String songTitle){
 //        mEditor.putString(Constants.PREFERENCES_TITLE_KEY, songTitle).apply();
 //    }
-    public void saveSongToFirebase(String songTitle, String artistName) {
-        mSearchedSongReference.push().setValue(artistName, songTitle);
-    }
+//    public void saveSongToFirebase(String songTitle, String artistName) {
+//        mSearchedSongReference.push().setValue(artistName, songTitle);
+//    }
 
 }
