@@ -32,10 +32,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Bind(R.id.searchAPIButton) Button mSearchAPIButton;
     @Bind(R.id.searchYouTubeButton) Button mSearchYouTubeButton;
 
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
-
-    private DatabaseReference mSearchedSongReference;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +45,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
         mSearchTitleTextView.setTypeface(boolackFont);
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         mSearchAPIButton.setOnClickListener(this);
         mSearchYouTubeButton.setOnClickListener(this);
@@ -66,11 +64,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             if (songTitle.equals("")){
                 Toast.makeText(SearchActivity.this, "Please enter song title", Toast.LENGTH_SHORT).show();
             } else {
-//                addToSharedPreferences(songTitle);
-                DatabaseReference songRef = FirebaseDatabase
-                        .getInstance()
-                        .getReference(Constants.FIREBASE_CHILD_SONGS);
-                songRef.push().setValue(mSong);
+                addToSharedPreferences(songTitle);
                 startActivity(intent);
             }
         } else if (v == mSearchYouTubeButton) {
@@ -90,11 +84,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-//    private void addToSharedPreferences(String songTitle){
-//        mEditor.putString(Constants.PREFERENCES_TITLE_KEY, songTitle).apply();
-//    }
-//    public void saveSongToFirebase(String songTitle, String artistName) {
-//        mSearchedSongReference.push().setValue(artistName, songTitle);
-//    }
+    private void addToSharedPreferences(String songTitle){
+        mEditor.putString(Constants.PREFERENCES_TITLE_KEY, songTitle).apply();
+    }
+
 
 }
