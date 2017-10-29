@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class RecordFormDialogFragment extends DialogFragment implements OnEditorActionListener {
+public class RecordFormDialogFragment extends DialogFragment implements View.OnClickListener {
 
     @Bind(R.id.fragmentLabel) TextView mFragmentLabel;
     @Bind(R.id.cancelButton) Button mCancelButton;
@@ -31,11 +31,9 @@ public class RecordFormDialogFragment extends DialogFragment implements OnEditor
     @Bind(R.id.titleEditText) EditText mTitleEditText;
     @Bind(R.id.artistEditText) EditText mArtistEditText;
 
-    public interface CreateRecordDialogListener {
-        void onSubmitCreateDialog(Record mSong);
-    }
+
     @Override
-    public View onViewCreated(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_record_form, container, false);
         getDialog().setTitle("Record Form Dialog");
@@ -44,44 +42,24 @@ public class RecordFormDialogFragment extends DialogFragment implements OnEditor
         Typeface boolackFont = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Boolack.ttf");
         mFragmentLabel.setTypeface(boolackFont);
 
-        mCancelButton.setOnEditorActionListener(this);
-        mSubmitButton.setOnEditorActionListener(this);
+        mCancelButton.setOnClickListener(this);
+        mSubmitButton.setOnClickListener(this);
 
         return rootView;
     }
 
     @Override
-    public boolean onEditorAction(View v, int actionId, KeyEvent event){
+    public void onClick(View v){
+        String songTitle = mTitleEditText.getText().toString();
+        String artistName = mArtistEditText.getText().toString();
+        Record mSong = new Record(songTitle, artistName);
         if (v == mSubmitButton){
-            String songTitle = mTitleEditText.getText().toString();
-            String artistName = mArtistEditText.getText().toString();
-            Record mSong = new Record(songTitle, artistName);
-            CreateRecordDialogListener listener = (CreateRecordDialogListener) getActivity();
-            listener.onSubmitCreateDialog(mSong);
+            //pass mSong POJO directly to Firebase
+            DatabaseReference songRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_SONGS);
+            songRef.push().setValue(mSong);
             dismiss();
-            return true;
-        } else if (v == mCancelButton){
-            dismiss();
-            return true;
         }
-        return false;
     }
-
-    @Override
-    public void onSubmitCreateDialog(Record mSong){
-        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
-    }
-
-//    @Override
-//    public void onClick(View v){
-//        String songTitle = mTitleEditText.getText().toString();
-//        String artistName = mArtistEditText.getText().toString();
-//        Record mSong = new Record(songTitle, artistName);
-//        if (v == mSubmitButton){
-//            //pass mSong to the parent activity
-//        }
-//    }
-
-    @Override
-    public boolean onEditorAction(TextView v, int )
 }
