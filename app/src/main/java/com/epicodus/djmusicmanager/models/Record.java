@@ -13,11 +13,11 @@ public class Record {
     String beforeSong;
     String afterSong;
     String bpm;
-    boolean owned;
+    String owned;
 
     public Record() {}
 
-    public Record(String typeDance, String recTitle, String recArtist, String recAlbum, String recYear, String beforeSong, String afterSong, String bpm, boolean owned){
+    public Record(String typeDance, String recTitle, String recArtist, String recAlbum, String recYear, String beforeSong, String afterSong, String bpm, String owned){
         this.typeDance = typeDance;
         this.recTitle = recTitle;
         this.recArtist = recArtist;
@@ -28,6 +28,11 @@ public class Record {
         this.bpm = bpm;
         this.owned = owned;
     }
+
+//    public Record(String recTitle, String recArtist) {
+//        this.recTitle = recTitle;
+//        this.recArtist = recArtist;
+//    }
 
     public String getTypeDance(){
         return typeDance;
@@ -61,7 +66,7 @@ public class Record {
         return bpm;
     }
 
-    public boolean getOwned(){
+    public String getOwned(){
         return owned;
     }
 }
