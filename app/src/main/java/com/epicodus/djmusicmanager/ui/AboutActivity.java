@@ -51,7 +51,9 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(AboutActivity.this, SearchActivity.class);
             startActivity(intent);
         } else if (v == mAddButton) {
-            Toast.makeText(AboutActivity.this, "Feature coming soon!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(AboutActivity.this, "Feature coming soon!", Toast.LENGTH_SHORT).show();
+            RecordFormDialogFragment recordFormDialogFragmentDialogFragment = new RecordFormDialogFragment();
+            recordFormDialogFragmentDialogFragment.show(getSupportFragmentManager(), "Record Form Dialog");
         }
     }
 }
