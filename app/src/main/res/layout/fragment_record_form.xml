@@ -31,13 +31,14 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:ems="15"
-        android:hint="(will become a spinner)"
+        android:hint="swing, tango etc."
         android:inputType="text"
         android:layout_below="@+id/fragmentLabel"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="22dp"
         android:layout_marginEnd="22dp" />
+    <!--will become a spinner-->
 
     <TextView
         android:layout_width="147dp"

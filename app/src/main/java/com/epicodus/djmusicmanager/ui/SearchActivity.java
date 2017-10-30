@@ -16,9 +16,14 @@ import android.widget.Toast;
 
 import com.epicodus.djmusicmanager.Constants;
 import com.epicodus.djmusicmanager.R;
+import com.epicodus.djmusicmanager.models.Record;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static java.security.AccessController.getContext;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.searchTitleTextView) TextView mSearchTitleTextView;
@@ -32,6 +37,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
@@ -80,5 +86,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private void addToSharedPreferences(String songTitle){
         mEditor.putString(Constants.PREFERENCES_TITLE_KEY, songTitle).apply();
     }
+
 
 }
