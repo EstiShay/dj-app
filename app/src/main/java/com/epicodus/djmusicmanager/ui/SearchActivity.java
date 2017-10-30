@@ -56,7 +56,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v){
         String songTitle = mSongTitleEditText.getText().toString();
         String artistName = mArtistNameEditText.getText().toString();
-        Record mSong = new Record(songTitle, artistName);
         if (v == mSearchAPIButton) {
             Intent intent = new Intent(SearchActivity.this, ResultsActivity.class);
             intent.putExtra("songTitle", songTitle);
