@@ -25,8 +25,8 @@
         android:textColor="@color/colorTextIcons"
         android:textSize="80sp"
         android:textStyle="bold"
-        android:paddingBottom="30sp"
-        android:paddingTop="20sp"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -44,15 +44,15 @@
         android:paddingTop="30dp"
         android:layout_below="@+id/appNameTextView" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_height="match_parent"
+        android:id="@+id/tracksRecyclerView"
         android:background="#FFFFFF"
+        android:layout_below="@+id/subtitleTextView"
         android:layout_above="@+id/navButtons"
-        android:layout_below="@+id/subtitleTextView"/>
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"/>
 
     <LinearLayout
         android:id="@+id/navButtons"
