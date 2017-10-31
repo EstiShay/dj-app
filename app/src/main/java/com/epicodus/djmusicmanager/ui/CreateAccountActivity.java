@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -92,55 +93,61 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
 
-        if (name.equals("")){
-            mNameEditText.requestFocus();
-            mNameEditText.setError("Please enter your name");
-            return;
-        }
-        if (email.equals("")){
-            mEmailEditText.requestFocus();
-            mEmailEditText.setError("Please enter your email");
-            return;
-        }
-        if (password.equals("")){
-            mPasswordEditText.requestFocus();
-            mPasswordEditText.setError("Password is required");
-            return;
-        }
-        if (confirmPassword.equals("")){
-            mConfirmPasswordEditText.requestFocus();
-            mConfirmPasswordEditText.setError("Password confirmation is required");
-            return;
-        }
+        boolean validEmail = isValidEmail(email);
+        boolean validName = isValidName(name);
+        boolean validPassword = isValidPassword(password, confirmPassword);
+        if (!validEmail || !validName || !validPassword) return;
 
-        if (password.equals(confirmPassword)) {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                Log.d(TAG, "Authentication successful");
-                            } else {
-                                Toast.makeText(CreateAccountActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        } else {
-            Toast.makeText(CreateAccountActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Log.d(TAG, "Authentication successful");
+                    } else {
+                        Toast.makeText(CreateAccountActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+    }
+
+    private boolean isValidEmail(String email){
+        boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        if (!isGoodEmail){
+            mEmailEditText.setError("Please enter a valid email address");
+            return false;
         }
+        return isGoodEmail;
+    }
+    private boolean isValidName(String name){
+        if (name.equals("")){
+            mNameEditText.setError("Please enter your name");
+            return false;
+        }
+        return true;
+    }
+    private boolean isValidPassword(String password, String confirmPassword){
+        if(password.length() < 6) {
+            mPasswordEditText.setError("Please create a password containing at least 6 characters");
+            return false;
+        } else if (!password.equals(confirmPassword)){
+            mPasswordEditText.setError("Passwords do not match");
+            return false;
+        }
+        return true;
     }
 
     private void createAuthStateListener() {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
-                final FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null){
-                    Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
+            final FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user != null){
+                Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
             }
         };
     }
