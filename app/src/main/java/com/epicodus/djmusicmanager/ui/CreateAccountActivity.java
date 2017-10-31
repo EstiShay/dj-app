@@ -2,7 +2,9 @@ package com.epicodus.djmusicmanager.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.epicodus.djmusicmanager.Constants;
 import com.epicodus.djmusicmanager.MainActivity;
 import com.epicodus.djmusicmanager.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +37,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
     @Bind(R.id.createAccountButton) Button mCreateAccountButton;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
+    String mEmail;
 
     public static final String TAG = CreateAccountActivity.class.getSimpleName();
 
@@ -41,6 +45,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private FirebaseAuth.AuthStateListener mAuthListener;
     private ProgressDialog mAuthProgressDialog;
     private String mName;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
         mLoginTextView.setOnClickListener(this);
         mCreateAccountButton.setOnClickListener(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -87,6 +96,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             startActivity(intent);
             finish();
         } else if (v == mCreateAccountButton) {
+            mEmail = mEmailEditText.getText().toString().trim();
+            addToSharedPreferences(mEmail);
             createNewAccount();
         }
     }
@@ -180,5 +191,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             }
             }
         };
+    }
+
+    private void addToSharedPreferences(String mEmail){
+        mEditor.putString(Constants.PREFERENCES_LOGIN_EMAIL, mEmail).apply();
     }
 }
