@@ -7,6 +7,7 @@ public class Constants {
     public static final String MUSIX_ARTIST_QUERY_PARAMETER = "q_artist";
 
     public static final String PREFERENCES_TITLE_KEY = "songTitle";
+    public static final String PREFERENCES_LOGIN_EMAIL = "email";
 
     public static final String FIREBASE_CHILD_SONGS = "songs";
 }

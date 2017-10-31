@@ -2,16 +2,21 @@ package com.epicodus.djmusicmanager.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.epicodus.djmusicmanager.Constants;
 import com.epicodus.djmusicmanager.MainActivity;
 import com.epicodus.djmusicmanager.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,19 +33,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Bind(R.id.registerTextView) TextView mRegisterTextView;
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
     @Bind(R.id.subtitleTextView) TextView mSubtitleTextView;
-    @Bind(R.id.emailEditText) TextView mEmailEditText;
-    @Bind(R.id.passwordEditText) TextView mPasswordEditText;
+    @Bind(R.id.emailEditText) EditText mEmailEditText;
+    @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.loginButton) Button mLoginButton;
+    String mEmail;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private ProgressDialog mAuthProgressDialog;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private String mRecentEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+        mRecentEmail = mSharedPreferences.getString(Constants.PREFERENCES_LOGIN_EMAIL, null);
+        if (mRecentEmail != null){
+            mEmailEditText.setText(mRecentEmail);
+        }
+
         mRegisterTextView.setOnClickListener(this);
         mLoginButton.setOnClickListener(this);
 
@@ -84,11 +101,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view){
+        mEmail = mEmailEditText.getText().toString().trim();
         if (view == mRegisterTextView) {
             Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
             startActivity(intent);
             finish();
         } else if (view == mLoginButton){
+            addToSharedPreferences(mEmail);
             loginWithPassword();
         }
     }
@@ -101,9 +120,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loginWithPassword(){
-        String email = mEmailEditText.getText().toString().trim();
+//        String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
-        if (email.equals("")){
+        if (mEmail.equals("")){
             mEmailEditText.requestFocus();
             mEmailEditText.setError("Please enter your email");
             return;
@@ -115,7 +134,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         mAuthProgressDialog.show();
 
-        mAuth.signInWithEmailAndPassword(email, password)
+        mAuth.signInWithEmailAndPassword(mEmail, password)
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -126,5 +145,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             });
 
+    }
+
+    private void addToSharedPreferences(String mEmail){
+        mEditor.putString(Constants.PREFERENCES_LOGIN_EMAIL, mEmail).apply();
     }
 }
