@@ -11,10 +11,11 @@
         android:id="@+id/newAccountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Account "
+        android:text="Start Here "
         android:textColor="@color/colorTextIcons"
         android:textSize="90sp"
         android:textStyle="bold"
+        android:layout_marginBottom="30dp"
         android:layout_above="@+id/linearLayout"
         android:layout_centerHorizontal="true" />
 

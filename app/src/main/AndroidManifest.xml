@@ -35,8 +35,12 @@
                 android:value="com.epicodus.djmusicmanager.ui.SearchActivity" />
         </activity>
         <activity android:name=".ui.RecordFormActivity" />
-        <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.LoginActivity">
+        <activity
+            android:name=".ui.CreateAccountActivity"
+            android:theme="@style/LoginTheme"/>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/LoginTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

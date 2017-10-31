@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.searchButton) Button mSearchButton;
     @Bind(R.id.addButton) Button mAddButton;
-    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.welcomeTextView) TextView mWelcomeTextView;
     @Bind(R.id.subtitleTextView) TextView mSubtitleTextView;
 
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
 
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
-        mAppNameTextView.setTypeface(boolackFont);
+        mWelcomeTextView.setTypeface(boolackFont);
         Typeface PTCFont = Typeface.createFromAsset(getAssets(), "fonts/PTC55F.ttf");
         mSubtitleTextView.setTypeface(PTCFont);
 

@@ -14,7 +14,8 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.registerTextView) TextView mRegisterTextView;
-    @Bind(R.id.welcomeTextView) TextView mWelcomeTextView;
+    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.subtitleTextView) TextView mSubtitleTextView;
     @Bind(R.id.emailEditText) TextView mEmailEditText;
     @Bind(R.id.passwordEditText) TextView mPasswordEditText;
 
@@ -27,8 +28,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mRegisterTextView.setOnClickListener(this);
 
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
-        mWelcomeTextView.setTypeface(boolackFont);
+        mAppNameTextView.setTypeface(boolackFont);
         Typeface PTCFont = Typeface.createFromAsset(getAssets(), "fonts/PTC55F.ttf");
+        mSubtitleTextView.setTypeface(PTCFont);
         mEmailEditText.setTypeface(PTCFont);
         mPasswordEditText.setTypeface(PTCFont);
     }

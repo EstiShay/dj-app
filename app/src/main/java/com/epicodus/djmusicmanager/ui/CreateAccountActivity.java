@@ -89,7 +89,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         final String name = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
-        String confirmPassword = mConfirmPasswordEditText.toString().trim();
+        String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
 
         if (password.equals(confirmPassword)) {
             mAuth.createUserWithEmailAndPassword(email, password)
