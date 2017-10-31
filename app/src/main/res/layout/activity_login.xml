@@ -51,7 +51,7 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@color/colorTextIcons"
             android:hint="email"
             android:inputType="textEmailAddress"
             android:nextFocusDown="@+id/passwordEditText"
@@ -65,7 +65,7 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@color/colorTextIcons"
             android:hint="password"
             android:inputType="textPassword"
             android:nextFocusDown="@+id/passwordEditText"
@@ -76,7 +76,7 @@
 
 
         <Button
-            android:id="@+id/passwordLoginButton"
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
