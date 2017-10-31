@@ -1,5 +1,6 @@
 package com.epicodus.djmusicmanager.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         };
+
+        createAuthProgressDialog();
     }
 
     @Override
@@ -89,6 +93,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void createAuthProgressDialog(){
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("...your excellent music collection");
+        mAuthProgressDialog.setCancelable(false);
+    }
+
     private void loginWithPassword(){
         String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
@@ -102,15 +113,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mPasswordEditText.setError("Password is required");
             return;
         }
+        mAuthProgressDialog.show();
 
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+            mAuthProgressDialog.dismiss();
                     if (!task.isSuccessful()) {
-                        Log.w(TAG, "signInWithEmail", task.getException());
-                        Toast.makeText(LoginActivity.this, "Auth failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login failed - try again!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
