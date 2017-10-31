@@ -1,5 +1,6 @@
 package com.epicodus.djmusicmanager.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -90,6 +91,27 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
+
+        if (name.equals("")){
+            mNameEditText.requestFocus();
+            mNameEditText.setError("Please enter your name");
+            return;
+        }
+        if (email.equals("")){
+            mEmailEditText.requestFocus();
+            mEmailEditText.setError("Please enter your email");
+            return;
+        }
+        if (password.equals("")){
+            mPasswordEditText.requestFocus();
+            mPasswordEditText.setError("Password is required");
+            return;
+        }
+        if (confirmPassword.equals("")){
+            mConfirmPasswordEditText.requestFocus();
+            mConfirmPasswordEditText.setError("Password confirmation is required");
+            return;
+        }
 
         if (password.equals(confirmPassword)) {
             mAuth.createUserWithEmailAndPassword(email, password)
