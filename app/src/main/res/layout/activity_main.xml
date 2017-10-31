@@ -14,10 +14,10 @@
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/appNameTextView"
+        android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DJMusicManager"
+        android:text="Welcome DJ "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -34,7 +34,7 @@
         android:id="@+id/subtitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your DJ Music + Notes"
+        android:text="Here are your tracks"
         android:textColor="@color/colorTextIcons"
         android:textSize="20sp"
         android:layout_alignParentTop="true"

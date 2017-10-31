@@ -12,11 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.AboutActivity"
@@ -39,7 +34,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.djmusicmanager.ui.SearchActivity" />
         </activity>
-        <activity android:name=".ui.RecordFormActivity"></activity>
+        <activity android:name=".ui.RecordFormActivity" />
+        <activity
+            android:name=".ui.CreateAccountActivity"
+            android:theme="@style/LoginTheme"/>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/LoginTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,11 +1,19 @@
 package com.epicodus.djmusicmanager;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,9 +24,12 @@ import android.widget.Toast;
 import com.epicodus.djmusicmanager.adapters.FirebaseRecordViewHolder;
 import com.epicodus.djmusicmanager.models.Record;
 import com.epicodus.djmusicmanager.ui.AboutActivity;
+import com.epicodus.djmusicmanager.ui.LoginActivity;
 import com.epicodus.djmusicmanager.ui.RecordFormDialogFragment;
 import com.epicodus.djmusicmanager.ui.SearchActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,35 +40,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.searchButton) Button mSearchButton;
     @Bind(R.id.addButton) Button mAddButton;
-//    @Bind(R.id.listView) ListView mListView;
-    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.welcomeTextView) TextView mWelcomeTextView;
     @Bind(R.id.subtitleTextView) TextView mSubtitleTextView;
-//    private String[] songs = new String[] {"The Lady is a Tramp by Ella Fitzgerald", "Fine Brown " +
-//            "Frame by Lou Rawls", "Leaving on a Jet Plane by HB Radke and the Jet City Swingers",
-//   "Blue Suit Boogie by Indigo Swing", "Scratching Circles by JD McPherson", "On Revival Day by " +
-//            "Laverne Baker", "Lavender Coffin by Lionel Hampton and His Orchestra", "Santa Maria " +
-//            "(Del Buen Ayre) by Gotan Project", "Home by Marc Brussard", "Cold Turkey by Anthony " +
-//            "David", "Sweet Little Angel by Big Mama Thornton", "Bump and Grind by Jimmy " +
-//            "Thackery", "John the Revelator by Govt Mule", "John the Revelator by Lee Roy Parnell"};
-
     private DatabaseReference mTrackReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
     @Bind(R.id.tracksRecyclerView) RecyclerView mTracksRecyclerview;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
         Typeface boolackFont = Typeface.createFromAsset(getAssets(), "fonts/Boolack.ttf");
-        mAppNameTextView.setTypeface(boolackFont);
+        mWelcomeTextView.setTypeface(boolackFont);
         Typeface PTCFont = Typeface.createFromAsset(getAssets(), "fonts/PTC55F.ttf");
         mSubtitleTextView.setTypeface(PTCFont);
 
-//        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, songs);
-//        mListView.setAdapter(adapter);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null){
+                    mWelcomeTextView.setText("Welcome " + user.getDisplayName() + "!");
+                } else {
+                }
+            }
+        };
 
         mTrackReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SONGS);
         setUpFirebaseAdapter();
@@ -65,6 +77,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAboutButton.setOnClickListener(this);
         mSearchButton.setOnClickListener(this);
         mAddButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_logout) {
+            logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setUpFirebaseAdapter(){
@@ -77,6 +120,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTracksRecyclerview.setHasFixedSize(true);
         mTracksRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mTracksRecyclerview.setAdapter(mFirebaseAdapter);
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -98,6 +149,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         mFirebaseAdapter.cleanup();
     }
-
-//    Need onResume() to reload RecyclerView to include newly created record
 }
