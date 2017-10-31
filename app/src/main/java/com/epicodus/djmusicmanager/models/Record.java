@@ -14,6 +14,7 @@ public class Record {
     String afterSong;
     String bpm;
     String owned;
+    private String pushId;
 
     public Record() {}
 
@@ -28,11 +29,6 @@ public class Record {
         this.bpm = bpm;
         this.owned = owned;
     }
-
-//    public Record(String recTitle, String recArtist) {
-//        this.recTitle = recTitle;
-//        this.recArtist = recArtist;
-//    }
 
     public String getTypeDance(){
         return typeDance;
@@ -68,5 +64,13 @@ public class Record {
 
     public String getOwned(){
         return owned;
+    }
+
+    public String getPushId(){
+        return pushId;
+    }
+
+    public void setPushId(String pushId){
+        this.pushId = pushId;
     }
 }

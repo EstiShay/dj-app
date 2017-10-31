@@ -3,6 +3,7 @@ package com.epicodus.djmusicmanager.ui;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 import com.epicodus.djmusicmanager.Constants;
 import com.epicodus.djmusicmanager.R;
 import com.epicodus.djmusicmanager.models.Record;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -79,11 +82,19 @@ public class RecordFormDialogFragment extends DialogFragment implements View.OnC
         }
         Record mSong = new Record(typeDance, songTitle, artistName, album, year, beforeSong, afterSong, bpm, owned);
         if (v == mSubmitButton){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             //pass mSong POJO directly to Firebase
             DatabaseReference songRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_SONGS);
-            songRef.push().setValue(mSong);
+                    .getReference(Constants.FIREBASE_CHILD_SONGS)
+                    .child(uid);
+            DatabaseReference pushRef = songRef.push();
+            String pushId = pushRef.getKey();
+            mSong.setPushId(pushId);
+            pushRef.setValue(mSong);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
             dismiss();
         } else if (v == mCancelButton){
             dismiss();

@@ -71,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
-        mTrackReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SONGS);
+        FirebaseUser userNow = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = userNow.getUid();
+        mTrackReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SONGS).child(uid);
         setUpFirebaseAdapter();
 
         mAboutButton.setOnClickListener(this);
