@@ -34,7 +34,7 @@
         android:id="@+id/subtitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Tracks"
+        android:text="Here are your tracks"
         android:textColor="@color/colorTextIcons"
         android:textSize="20sp"
         android:layout_alignParentTop="true"
