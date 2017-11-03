@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background" />
+
+        <TextView
+            android:id="@+id/searchTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft = "10dp"
+            android:inputType="text"
+            android:text="Search for a song"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="80dp" />
+
+        <EditText
+            android:id="@+id/songTitleEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="@string/song_title_required"
+            android:layout_below="@+id/searchTitleTextView"
+            android:inputType="text"
+            android:padding="5dp" />
+
+        <EditText
+            android:id="@+id/artistNameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/songTitleEditText"
+            android:layout_alignStart="@+id/songTitleEditText"
+            android:layout_below="@+id/songTitleEditText"
+            android:layout_marginTop="51dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="@string/artist_name_opt"
+            android:inputType="text"
+            android:padding="5dp" />
+
+        <LinearLayout
+            android:id="@+id/searchNavButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/searchYouTubeButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight=".5"
+                android:background="@color/colorPrimaryDark"
+                android:drawableTop="@drawable/ic_play"
+                android:paddingTop="5dp"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextIcons" />
+
+            <Button
+                android:id="@+id/searchAPIButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_weight=".5"
+                android:background="@color/colorPrimaryDark"
+                android:drawableTop="@drawable/ic_search"
+                android:paddingTop="5dp"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextIcons" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
