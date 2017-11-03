@@ -15,6 +15,7 @@ public class Record {
     String bpm;
     String owned;
     private String pushId;
+    String index;
 
     public Record() {}
 
@@ -28,6 +29,7 @@ public class Record {
         this.afterSong = afterSong;
         this.bpm = bpm;
         this.owned = owned;
+        this.index = "not_specified";
     }
 
     public String getTypeDance(){
@@ -72,5 +74,13 @@ public class Record {
 
     public void setPushId(String pushId){
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index){
+        this.index = index;
     }
 }

@@ -11,6 +11,7 @@ import com.epicodus.djmusicmanager.models.Record;
 public class FirebaseRecordViewHolder extends RecyclerView.ViewHolder{
     View mView;
     Context mContext;
+    public TextView mRecordTitleArtistTextView;
 
     public FirebaseRecordViewHolder (View songView) {
         super(songView);
@@ -19,10 +20,10 @@ public class FirebaseRecordViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bindRecord(Record record) {
-        TextView titleArtistTextView = (TextView)mView.findViewById(R.id.songTitleArtistTextView);
-        TextView albumYearTextView = (TextView)mView.findViewById(R.id.albumYearTextView);
+        mRecordTitleArtistTextView = mView.findViewById(R.id.songTitleArtistTextView);
+        TextView albumYearTextView = mView.findViewById(R.id.albumYearTextView);
 
-        titleArtistTextView.setText(record.getRecTitle() + " by " + record.getRecArtist());
+        mRecordTitleArtistTextView.setText(record.getRecTitle() + " by " + record.getRecArtist());
         if (!record.getRecAlbum().equals("") && !record.getRecYear().equals("")){
             albumYearTextView.setText(record.getRecAlbum() + " released " + record.getRecYear());
         } else if (record.getRecYear().equals("")){
