@@ -35,8 +35,12 @@ import com.epicodus.djmusicmanager.util.SimpleItemTouchHelperCallback;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -118,10 +122,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setUpFirebaseAdapter(){
         FirebaseUser userNow = FirebaseAuth.getInstance().getCurrentUser();
         String uid = userNow.getUid();
-        mTrackReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SONGS).child(uid);
+        Query query = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SONGS).child(uid).orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
         mFirebaseAdapter = new FirebaseRecordListAdapter(Record.class, R.layout.record_list_item_drag,
-                FirebaseRecordViewHolder.class, mTrackReference, this, this) {
+                FirebaseRecordViewHolder.class, query, this, this) {
             @Override
             protected void populateViewHolder(FirebaseRecordViewHolder viewHolder, Record model, int position) {
                 viewHolder.bindRecord(model);

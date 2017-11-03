@@ -9,34 +9,41 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/songTitleArtistTextView"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:text="Song Title and Artist"
-            android:textColor="@color/colorPrimaryText" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/albumYearTextView"
-            android:textSize="10sp"
-            android:text="Album and Year"
-            android:textColor="@color/colorSecondaryText"
-            android:layout_marginBottom="20dp" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
+                android:id="@+id/dragIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/dragIcon"
-                android:gravity="bottom|right"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_reorder_black_24dp"/>
+                android:gravity="top|right"
+                android:src="@drawable/ic_reorder_menu" />
+
+            <TextView
+                android:id="@+id/songTitleArtistTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Song Title and Artist"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/albumYearTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/songTitleArtistTextView"
+                android:text="Album and Year"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="10sp" />
         </RelativeLayout>
+
     </LinearLayout>
 </LinearLayout>
