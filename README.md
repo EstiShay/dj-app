@@ -31,10 +31,10 @@ In the initial version, the Add button will allow users to create a record from 
 The SearchActivity's implicit intent that takes DJs to YouTube will move to the ResultsActivity, so that if a DJ receives a result from MusixMatch that they're unfamiliar with, they can go to YouTube to listen to it.
 
 ## Design (in progress)
-<img src="app/src/main/res/drawable/login_screenshot.jpg" width="300" alt="Login activity"> <img src="app/src/main/res/drawable/new_account_screenshot.jpg" width="300" alt="Create new account activity">
-<img src="app/src/main/res/drawable/main_activity_screenshot.jpg" width="300" alt="Initial landing activity"> <img src="app/src/main/res/drawable/add_screenshot.jpg" width="300" alt="Add record fragment">
-<img src="app/src/main/res/drawable/search_screenshot.jpg" width="300" alt="Search activity"> <img src="app/src/main/res/drawable/results_screenshot.jpg" width="300" alt="Search results activity">
-<img src="app/src/main/res/drawable/about_screenshot.jpg" width="300" alt="About activity">
+<img src="app/src/main/res/drawable/login_screenshot.jpg" height="500" alt="Login activity"> <img src="app/src/main/res/drawable/new_account_screenshot.jpg" height="500" alt="Create new account activity">
+<img src="app/src/main/res/drawable/main_activity_screenshot.jpg" height="500" alt="Initial landing activity"> <img src="app/src/main/res/drawable/add_screenshot.jpg" height="500" alt="Add record fragment">
+<img src="app/src/main/res/drawable/search_screenshot.jpg" height="500" alt="Search activity"> <img src="app/src/main/res/drawable/results_screenshot.jpg" height="500" alt="Search results activity">
+<img src="app/src/main/res/drawable/about_screenshot.jpg" height="500" alt="About activity">
 
 ### Wireframing
 <img src="app/src/main/res/drawable/wireframing2.JPG" width="400" alt="Diagram of Start and Search pages">
