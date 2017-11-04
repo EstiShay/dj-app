@@ -31,12 +31,9 @@ In the initial version, the Add button will allow users to create a record from 
 The SearchActivity's implicit intent that takes DJs to YouTube will move to the ResultsActivity, so that if a DJ receives a result from MusixMatch that they're unfamiliar with, they can go to YouTube to listen to it.
 
 ## Design (in progress)
-<img src="app/src/main/res/drawable/login_screenshot.jpg" width="300" alt="Login activity">
-<img src="app/src/main/res/drawable/new_account_screenshot.jpg" width="300" alt="Create new account activity">
-<img src="app/src/main/res/drawable/main_activity_screenshot.jpg" width="300" alt="Initial landing activity">
-<img src="app/src/main/res/drawable/add_screenshot.jpg" width="300" alt="Add record fragment">
-<img src="app/src/main/res/drawable/search_screenshot.jpg" width="300" alt="Search activity">
-<img src="app/src/main/res/drawable/results_screenshot.jpg" width="300" alt="Search results activity">
+<img src="app/src/main/res/drawable/login_screenshot.jpg" width="300" alt="Login activity"> <img src="app/src/main/res/drawable/new_account_screenshot.jpg" width="300" alt="Create new account activity">
+<img src="app/src/main/res/drawable/main_activity_screenshot.jpg" width="300" alt="Initial landing activity"> <img src="app/src/main/res/drawable/add_screenshot.jpg" width="300" alt="Add record fragment">
+<img src="app/src/main/res/drawable/search_screenshot.jpg" width="300" alt="Search activity"> <img src="app/src/main/res/drawable/results_screenshot.jpg" width="300" alt="Search results activity">
 <img src="app/src/main/res/drawable/about_screenshot.jpg" width="300" alt="About activity">
 
 ### Wireframing
@@ -47,7 +44,7 @@ The SearchActivity's implicit intent that takes DJs to YouTube will move to the 
 * Clone the repo
 * Sign up for a free API key from MusixMatch: https://developer.musixmatch.com/signup. MusixMatch provides three [plans](https://developer.musixmatch.com/plans "plans") but this project works with the free testing plan.
 * At the root level, create a Java class file named gradle.properties. Save your API key here and name it "MusixKey."
-* You will need a google-service.json file in the app directory to connect to Firebase.
+* You will need a google-services.json file in the app directory to connect to Firebase.
 
 ### Technologies Used
 * Java, XML
