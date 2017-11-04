@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,30 +22,39 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.epicodus.djmusicmanager.adapters.FirebaseRecordListAdapter;
 import com.epicodus.djmusicmanager.adapters.FirebaseRecordViewHolder;
 import com.epicodus.djmusicmanager.models.Record;
 import com.epicodus.djmusicmanager.ui.AboutActivity;
 import com.epicodus.djmusicmanager.ui.LoginActivity;
 import com.epicodus.djmusicmanager.ui.RecordFormDialogFragment;
 import com.epicodus.djmusicmanager.ui.SearchActivity;
+import com.epicodus.djmusicmanager.util.ItemTouchHelperAdapter;
+import com.epicodus.djmusicmanager.util.OnStartDragListener;
+import com.epicodus.djmusicmanager.util.SimpleItemTouchHelperCallback;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnStartDragListener {
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.searchButton) Button mSearchButton;
     @Bind(R.id.addButton) Button mAddButton;
     @Bind(R.id.welcomeTextView) TextView mWelcomeTextView;
     @Bind(R.id.subtitleTextView) TextView mSubtitleTextView;
     private DatabaseReference mTrackReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
-    @Bind(R.id.tracksRecyclerView) RecyclerView mTracksRecyclerview;
+    private FirebaseRecordListAdapter mFirebaseAdapter;
+    private ItemTouchHelper mItemTouchHelper;
+    @Bind(R.id.tracksRecyclerView) RecyclerView mTracksRecyclerView;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -71,9 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
-        FirebaseUser userNow = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = userNow.getUid();
-        mTrackReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SONGS).child(uid);
         setUpFirebaseAdapter();
 
         mAboutButton.setOnClickListener(this);
@@ -113,15 +120,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setUpFirebaseAdapter(){
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Record, FirebaseRecordViewHolder>(Record.class, R.layout.song_list_item, FirebaseRecordViewHolder.class, mTrackReference) {
+        FirebaseUser userNow = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = userNow.getUid();
+        Query query = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SONGS).child(uid).orderByChild(Constants.FIREBASE_QUERY_INDEX);
+
+        mFirebaseAdapter = new FirebaseRecordListAdapter(Record.class, R.layout.record_list_item_drag,
+                FirebaseRecordViewHolder.class, query, this, this) {
             @Override
             protected void populateViewHolder(FirebaseRecordViewHolder viewHolder, Record model, int position) {
                 viewHolder.bindRecord(model);
             }
         };
-        mTracksRecyclerview.setHasFixedSize(true);
-        mTracksRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        mTracksRecyclerview.setAdapter(mFirebaseAdapter);
+        mTracksRecyclerView.setHasFixedSize(true);
+        mTracksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mTracksRecyclerView.setAdapter(mFirebaseAdapter);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mTracksRecyclerView);
     }
 
     private void logout() {
@@ -150,5 +166,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy(){
         super.onDestroy();
         mFirebaseAdapter.cleanup();
+    }
+
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder){
+        mItemTouchHelper.startDrag(viewHolder);
     }
 }

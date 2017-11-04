@@ -105,7 +105,7 @@
             android:textColor="@color/colorTextIcons"
             android:background="@color/colorPrimaryDark"
             android:textAllCaps="false"
-            android:drawableTop="@drawable/ic_about"
+            android:drawableTop="@drawable/ic_info"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"/>
 

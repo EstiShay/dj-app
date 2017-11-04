@@ -4,12 +4,7 @@
     <string name="about_text">This app helps DJs manage their music metadata and keep personal
         notes on individual tracks. Our beautiful background image photo is by Ardian Lumi on Unsplash.
     </string>
-    <string name="features_text">Tap Search to find your track. You\'ll see results from
-        MusixMatch\'s database of music track metadata. Tap a title to display the form to create a
-        personal record for that song. Label your music with the type of dance event you\'ll play it
-        at, songs to pair it with, whether you own it already or want to add it to a wish list,
-        BPM, and more. Save to your database, hosted by Firebase. You can also create your own records
-        by tapping Add.</string>
+    <string name="features_text">&#8226;  Add to create your own records.\n&#8226;  Save your tracks (hosted by Firebase).\n&#8226;  Search to find a song in MusixMatch\'s database.\n&#8226;  Tap a result to add it to your collection.\n&#8226;  List the type of dance event, owned or wish list, BPM, songs to play with it.\n&#8226;  To delete: swipe on the home screen.\n&#8226;  Reorder how tracks display your home screen.</string>
     <string name="didn_t_find">Didn\'t find what you were looking for? Try a more specific search. Results capped at 100.</string>
     <string name="song_title_required">Song title (required)</string>
     <string name="artist_name_opt">Artist name (optional)</string>
